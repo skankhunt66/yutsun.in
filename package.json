@@ -3,6 +3,7 @@
   "description": "A blog.",
   "license": "MIT",
   "version": "0.1.0",
+  "main": "rss.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
