@@ -23,6 +23,8 @@
     "@mdx-js/tag": "^0.15.0",
     "lightense-images": "^1.0.8",
     "rehype-slug": "^2.0.1",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
   }
 }
