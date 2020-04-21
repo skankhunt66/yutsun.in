@@ -3,7 +3,9 @@ export default ({ children, ...props }) => (
     {children}
     <script dangerouslySetInnerHTML={{ __html: `
       // add your google analytics code here
+      https://www.googletagmanager.com/gtag/js?id=UA-164136888-1
     `}} />
+
     <style jsx>{`
       div {
         margin: auto;
