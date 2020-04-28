@@ -2,7 +2,6 @@ export default ({ children, ...props }) => (
   <div {...props}>
     {children}
     <script dangerouslySetInnerHTML={{ __html: `
-      // add your google analytics code here
       https://www.googletagmanager.com/gtag/js?id=UA-164136888-1
     `}} />
 
