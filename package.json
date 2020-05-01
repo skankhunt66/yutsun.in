@@ -22,6 +22,7 @@
   "dependencies": {
     "@mdx-js/tag": "^0.15.0",
     "lightense-images": "^1.0.8",
+    "prism-react-renderer": "^1.1.0",
     "rehype-slug": "^2.0.1",
     "rss": "^1.2.2"
   }
