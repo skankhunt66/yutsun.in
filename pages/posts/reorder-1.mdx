@@ -1,0 +1,135 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: 'volatile',
+  author: 'yutsun',
+  date: '2020-05-31',
+  description: 'summary'
+}
+
+export default post(meta)
+
+在Java内存模型中，volatile是一个特殊的存在，它的语义看起来很简单，却又有很多值得推敲的细节，希望能借助这篇文章厘清思路。
+
+这里是一个思维导图，我会沿着这张图慢慢讲起，首先是Java同步工具。
+
+### sychronized
+
+synchronized由JVM提供，通过指令monitorenter和monitorexit来实现。
+sychronized是一个重量级的锁，它的使用成本很高。原因在于锁的所有权在线程间切换时，会引起程序在
+用户态和内核态之间切换，这种转换需要消耗很多cpu时间。
+
+### lock
+
+jdk5之后，Java提供了全新的并发类库，java.util.concurrent，也叫JUC，其中包含了lock接口。
+lock是类库层面的实现，基础实现是AbstractQueuedSynchronizer，即大名鼎鼎的AQS，AQS的底层基础是CAS和CLH队列。
+和sychronized相比，lock轻的多，也更灵活。但synchronized在易用性上胜出两筹（侵入性小，用不着考虑锁释放），
+其性能将来也可能在jvm中得到优化。
+
+###  volatile
+
+volatile是Java提供的轻量级同步机制。使用它几乎用不着付出什么代价，那么显然，它能提供的保证也很有限。
+一个被volatile修饰的变量拥有两种特性，一是可见性，二是不可重排序。
+
+#### 可见性
+
+什么是可见性，不妨先看一下jse里对可见性的描述：
+
+> A field may be declared volatile, in which case the Java Memory Model ensures that all threads see a consistent value for the variable
+
+"如果一个变量被volatile修饰，Java内存模型保证所有线程都能看到一致的变量值"，这句话其实挺含混不清，
+与其纠结于它究竟在讲什么，不如先探讨一下为什么会有可见性问题。
+
+此处的不可见指的是线程没有拿到该拿到的值。举个例子，A时刻在T1线程中为参数r写入新值r.v2（旧值为r.v1），在A时刻之后，T2线程读取r的值，读到的依然可能是r.v1。
+
+这里遇到的是缓存一致性问题，在cpu层级也存在缓存一致性问题，原因是cpu计算速度很快，数据写入和读取的速度则没那么快，为了弥补这其中的差距，cpu引入了高速缓存cache，
+在计算完成后，将数据刷回内存，在计算完成到刷回内存中间，有一段时间间隔，在这段时间里，不共享cache的核心/线程访问该数据时，肯定就拿不到最新的数据。
+这就是缓存一致性问题。
+
+Java内存模型与上述cpu内存模型可以类比，由主内存和工作内存组成，显然也会遇到缓存一致性问题。
+
+在cpu层级，缓存一致性的解决方案是缓存一致性协议，常见的有mesi协议。底层实现机制是在写入变量后强制立即刷回主内存（事实上是清空了缓存，这一时刻之前的数据都被刷入主内存），
+在读取变量时，强制本地缓存失效，从主内存中读取新的数据，这一机制被称为memory barie，也就是Memory Barriers，也就是内存屏障。这个机制实际上比我讲的要复杂很多，有兴趣
+的可以去看一篇文章，Memory Barriers:  a Hardware View for Software Hackers。
+
+Java解决缓存一致性问题的方案就是volatile，工作机制和上述的内存屏障基本一致。
+
+volatile可见性有一些应用场景，其中典型的一个是开关。想必大家都这么写过代码：
+
+        static boolean switch = true;
+
+        public void shutdown() {
+          switch = false;
+        }
+
+        public void run() {
+          while(switch) {
+            dosomething();
+          }
+        }
+
+如果不给switch加volatile，这段代码就将出现问题（显然shutdown会是一个外部调用）。
+
+#### 指令重排序
+
+指令重排序有个层级，编译器和cpu指令级别，引用一段jse的表述：
+
+> A Just-In-Time compilerin a Java Virtual Machine implementation may rearrange code, or the processor. 
+> In addition,the memory hierarchy of the architecture on which a Java Virtual 
+> Machine implementationis run may make it appear as if code is being reordered.
+
+同样借用jse中的一个例子来看一下指令重排序，
+
+        p.x = 0;
+        q = p;
+        r1 = p;
+        r2 = r1.x;
+        r3 = q;
+        r4 = r3.x;
+        r5 = r1.x;
+
+在此处，r5 = r1.x可以被编译器优化成r5 = r2，可见jvm规范允许编译器做一些优化，以提高运行效率。
+
+对程序员来说，这个前提简直就像是把代码从地面抛向了太空，一行行飘散重组，重组成你不认识的家伙。
+
+不过从结果来看，我们的代码虽然被重组了，但显然还是稳稳的站在了地面上，这其中有很多很多魔法。
+其中看起来最让人有安全感的当数sychronize-with和happens-before原则。
+
+* synchronize-with
+
+> Every  execution  has  a  synchronization  order.  A  synchronization  order  is  a  totalorder  over  all  of  the  synchronization  actions  of  an  execution. 
+
+可以看出这里说的是自然顺序，非常好理解。单线程内的顺序在此得到保障。
+
+* happens-before（hf）
+
+hf原则看起来更是忠厚老实，1234清清楚楚：
+
+1. Program Order Rule-程序次序规则
+
+2. Monitor Lock Rule-管程锁定规则
+
+3. Volatile Variable Rule-volatile变量规则
+
+4. Thread Start Rule-线程启动规则
+
+5. Thread Termination Rule-线程终止规则
+
+6. Thread Interruption Rule-线程中断规则
+
+7. Finalizer Rule-对象终结规则
+
+8. Transitivity-传递性
+
+这玩意看起来很详细，也不难懂，仿佛可以套用解决一切顺序执行问题。但实际上就像是数学公式--你永远不知道它有多少变种，
+除非你去做形式化证明，抽丝剥茧，找到真理核心。
+
+我，我也还没搞懂这个到底要怎么解释，或许要等我看懂了下面这段证明才可以
+
+> We use f|d to denote the function given by restricting the domain of f to d. 
+> For all x in d,f|d(x) = f(x), and for all x not in d, f|d(x) is undefined.
+> We use p|d to represent the restriction of the partial order p to the elements in d. 
+> For all x,y ind, p(x,y) if and only if p|d(x,y). If either x or y are not in d, then it is not the case that p|d(x,y).
+
+只需要记住，减少数据竞争，做好同步，这总会错的更少。
