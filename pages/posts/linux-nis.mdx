@@ -12,6 +12,8 @@ export default post(meta)
 
 <!-- content starts here -->
 
+最近接触到了一个超算管理系统，它使用nis作为集群用户权限管理工具。
+
 ### nis是啥
 
 在大型数据中心中，我们有用同一套账号管理多台linux服务器的需求，nis就是解决这个需求的工具。
@@ -43,22 +45,75 @@ server端是主从架构，用户数据有保障；
 
 #### 用户信息保全
 
+- nis工作流程
+
+  -  client
+
+在client登录时，会首先在本地/etc/passwd里查找用户，如果找不到，就去client配置的nis域中广播查询，master/slave先回应者会被client接受。
+
+client请求服务的基础是rpc。
+
+什么是rpc？
+
+nis、nfs等服务在启动时，会将端口注册到rpc，客户端根据固定端口去访问server，拿到对应服务的端口去调用服务。
+
+- server
+
+1. 将用户数据制作成文档数据库；
+
+2. master有变动将通知slave；
+
+3. slave也可以主动请求master更新数据；
+
+4. 数据有变动需要重新制作数据库和同步；
+
 - nis主从架构
 
-- nis工作流程
+在client较多的情况下，master可能会吃不消，以及还要考虑数据备份，nis提供了主从架构来应对。
 
 #### nis怎么用
 
-- nis安装
+- nis软件
+
+    yp-tools ：提供 NIS 相关的查寻指令功能
+    ypbind   ： NIS Client 端的设定
+    ypserv   ： NIS Server 端的设定
+    rpcbind  ：rpc设定
 
 - nis server配置
 
+    /etc/ypserv.conf：这是最主要的 ypserv 软件所提供的配置文件，可以规范 NIS 客户端是否可登入的权限。
+    /etc/hosts：由于 NIS server/client 会用到网络主机名与 IP 的对应，因此这个主机名对应档就显的相当重要！每一部主机名与 IP 都需要记录才行！
+    /etc/sysconfig/network：可以在这个档案内指定 NIS 的网域 (nisdomainname)。
+    /var/yp/Makefile：前面不是说账号数据要转成数据库文件吗？ 这就是与建立数据库有关的动作配置文件；
+
+    /usr/sbin/ypserv：就是 NIS 服务器的主要提供服务；
+    /usr/sbin/rpc.yppasswdd：提供额外的 NIS 客户端之用户密码修改服务， 透过这个服务， NIS 客户端可以直接修改在 NIS 服务器上的密码。相关的使用程序则是 yppasswd 指令；
+
+
+    /usr/lib64/yp/ypinit：建立数据库的命令，非常常用 (在 32 位的系统下，文件名是 /usr/lib/yp/ypinit )；
+    /usr/bin/yppasswd：与 NIS 客户端有关，主要在让用户修改服务器上的密码。
+
 - nis client配置
 
-#### nis demo
+
+    /etc/sysconfig/network：就是 NIS 的域名；
+    /etc/hosts：至少需要有各个 NIS 服务器的 IP 与主机名对应；
+    /etc/yp.conf：这个则是 ypbind 的主要配置文件，里面主要设定 NIS 服务器所在；
+    /etc/sysconfig/authconfig：规范账号登入时的认证机制；
+    /etc/pam.d/system-auth ：账号通常由 PAM 模块所管理， 所以必须要在 PAM 模块内加入 NIS 的支持；
+    /etc/nsswitch.conf ：这个档案可以规范账号密码与相关信息的查询顺序，默认是先找 /etc/passwd 再找 NIS 数据库；
+
+
+    /usr/bin/yppasswd ：更改你在 NIS database (NIS Server 所制作的数据库) 的密码；
+    /usr/bin/ypchsh   ：同上，但是是更改 shell；
+    /usr/bin/ypchfn   ：同上，但是是更改一些用户的讯息。
 
 #### nis替代品
 
 - samba
 
 - ldap
+
+在新版本中，客户明确要求需要用ldap取代nis，原因应该是在超5000节点的场景中，nis存在性能瓶颈。
+客户不用了，就随便看看吧。
