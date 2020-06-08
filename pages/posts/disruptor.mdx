@@ -1,0 +1,70 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: 'disruptor-队列皇冠上的明珠',
+  author: 'yutsun',
+  date: '2020-06-08',
+  description: 'summary'
+}
+
+export default post(meta)
+
+<!-- content starts here -->
+
+disruptor有三个特点，支持多consumer、内存预分配、提供无锁选项。
+
+1. 核心概念
+
+        1. Ring Buffer
+            环形队列被认为是disruptor最主要的特性，然而从3.0之后，应用场景有了变化，
+            似乎只用于存和更新数据，在一些情况下可以被用户自定义的队列取代。
+
+        2. Sequence
+            大意是disruptor的顺序保证是分组件（consumer）的，各组件都可以保存自己的顺序，
+            同时顺序也提供了很多AtomicLong提供的feature，区别之处在于disruptor的顺序是用于
+            防止错误的数据共享。
+
+        3. Sequencer
+            这是disruptor真正的核心。
+
+        4. Sequence Barrier
+            这个看起来像是和内存屏障一样的东西，它标记了消息和消费者之间的关系。
+
+        5. Wait Strategy
+            等待策略，标识的是消费者的等待方式。和lock free有关，有点意思。
+
+        6. Event
+            没啥说的。
+
+        7. EventProcessor
+            看起来像是selector，reactor模型中事件驱动的核心。
+
+        8. EventHandler
+            事件处理器，listener
+        
+        9. Producer
+            没啥说的。
+
+2. 多consumer
+
+    这是disruptor和queue最大的不同。queue支持单consumer，disruptor支持多consumer。
+    分布式应用有典型的三消费者场景，journalling、replication、business logic。
+
+    业务处理通常要等到日志记录和分布式节点通讯完成之后再进行，在此场景下引入gating的概念，
+    确保其消费顺序。gating在两处实现，一是确保生产者不会引入过多的消费者（？？？）， 二是
+    通过SequenceBarrier确保顺序（跟内存屏障一样嘛）。
+
+    disruptor的核心Sequencer确保顺序的时候，只需要确保消费树叶子节点顺序不超过环形队列顺序
+    即可。这句不太好理解，我不知道为什么消费者不能持有比环形队列序列更低的序列。
+
+3. 事件内存预分配
+
+    disruptor的一个目标是低延迟，低延迟面临的最大挑战就是GC。想搞定GC，除了换收集器就要在内存
+    上打主意了。可能是做了手动清理等操作。
+
+4. lock-free
+
+    无锁无竞争，延迟自然低。disruptor使用内存屏障和cas来实现无锁。唯一一处用到锁的地方是
+    BlockingWaitStrategy，为的是降低cpu资源占用。
+
