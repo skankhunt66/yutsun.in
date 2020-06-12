@@ -1,0 +1,31 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: '监考告警性能优化',
+  author: 'yutsun',
+  date: '2020-06-08',
+  description: 'summary'
+}
+
+export default post(meta)
+
+<!-- content starts here -->
+
+新系统要求支持5000节点，每节点100指标，按照目前的架构来看，每五分钟就需要处理5000*100，也就是50W的告警量。
+
+按照上一个版本单线程处理告警，肯定是做不到，测试单线程，单个告警耗时300ms，一分钟也才能干几百，没法看。
+
+先做一些力所能及的优化。
+
+#### 多线程优化
+
+首先是多线程优化。采取单线程的原因是考虑到告警秒恢复的场景，需要严格的按照时间顺序处理告警。
+
+首先讲告警分为三个阶段:
+
+#### step1 
+
+21:46 50w 2:00 3w
+
+
