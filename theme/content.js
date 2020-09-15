@@ -32,23 +32,28 @@ export default ({ children, meta = {} }) => (
         line-height: 1.7;
       }
       
-      // :global(:target) {
-      //   background: #fffa9e;
-      // }
-      // :global(ul) {
-      //   list-style-type: none;
-      //   padding: 0;
-      // }
-      // :global(li) {
-      //   padding-left: 1.1875em;
-      //   position: relative;
-      //   margin-bottom: .25em;
-      // }
-      // :global(li):before {
-      //   content: "•";
-      //   position: absolute;
-      //   left: .2em;
-      // }
+      :global(:target) {
+        background: #fffa9e;
+      }
+      :global(ul) {
+        list-style-type: none;
+        padding: 0;
+      }
+      :global(li) {
+        padding-left: 1.1875em;
+        position: relative;
+        margin-bottom: .25em;
+      }
+      :global(th) {
+        position: relative;
+        margin-bottom: .25em;
+        font-weight: 400;
+      }
+      :global(li):before {
+        content: "•";
+        position: absolute;
+        left: .2em;
+      }
     `}</style>
   </div>
 )

@@ -2,8 +2,8 @@ const H1 = ({ children, id, ...props }) => <h1 id={id} {...props}>
   {children}
   <style jsx>{`
     h1 {
-      font-size: 1.5em;
-      font-weight: 800;
+      font-size: 1.7em;
+      font-weight: 450;
     }
   `}</style>
 </h1>
@@ -14,7 +14,7 @@ const H2 = ({ children, id }) => <h2 id={id}>
     h2 {
       margin-top: 2.5rem;
       font-size: 1.333em;
-      font-weight: 700;
+      font-weight: 450;
     }
     a {
       color: inherit;
@@ -29,7 +29,7 @@ const H3 = ({ children, id }) => <h3 id={id}>
     h3 {
       margin-top: 2.0rem;
       font-size: 1.185em;
-      font-weight: 600;
+      font-weight: 400;
     }
     a {
       color: inherit;
@@ -44,7 +44,7 @@ const H4 = ({ children, id }) => <h4 id={id}>
     h4 {
       margin-top: 1.5rem;
       font-size: 1.053em;
-      font-weight: 600;
+      font-weight: 400;
     }
     a {
       color: inherit;
