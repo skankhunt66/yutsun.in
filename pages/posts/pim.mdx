@@ -1,0 +1,67 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: '黑暗之魂与普罗米修斯',
+  author: 'yutsun',
+  date: '2020-04-15',
+  description: 'summary'
+}
+
+export default post(meta)
+
+#### MIB管理模块
+
+MIB管理模块包含MIB文件解析和TRAP OID管理两个子项。
+
+MIB文件详尽定义了受管设备的各属性及其OID值。
+MIB解析模块是一个工程工具，对MIB文件提供上传、解析、查询和导出功能，并可以管理TRAP OID。
+MIB上传可以解析得到其中的TRAP OID信息，TRAP OID信息可导出到TRAP OID管理。
+TRAP OID管理提供对OID的可视化管理，提供增删改查操作。
+
+MIB管理模块配合ALARM-DEFINE项目提供了完整的被动告警适配解决方案。
+
+技术栈：spring boot、mybatis、snmp4j
+
+#### 云诊断系统
+
+云诊断系统包含管理目标巡检、作业管理、日志分析、数据呈现和通知等功能。
+
+巡检作业
+
+技术栈：juc、quartz、shell、
+
+#### 告警模块
+
+告警是PIM系统核心模块，核心功能是主被动告警解析、融合入库，并提供相关的业务处理（确认/清除）、查询、导出、通知功能。
+该模块历经三次迭代，架构变更如下：
+
+技术栈：mysql、redis、guava cache、caffeine、限流器、分布式
+基础：tcp/ip 握手挥手、linux io模型、分布式基础（raft）、git
+java: 锁、JUC、CHL队列、hashMap、AIO、NIO、垃圾收集器、收集器调优、类加载机制、对象结构、jmm、前后端编译优化、jdk8（流）
+mysql：数据结构、索引结构、索引规则、B+树、表连接、buffer pool、日志、mvcc、死锁
+redis：布隆过滤器（缓存穿透）、访问加锁（缓存击穿）、集群和分时失效（缓存雪崩）、redis持久化（RDB和AOF）、淘汰策略（LRU、LFU、定时/定期删除等）、多线程IO复用
+guava cache: api design、sharding
+caffeine: w-tiny-cache
+guava rateLimiter: 限流器思路
+
+- IO模型
+  
+  select、poll、epoll，epoll惊群
+
+- cache
+
+  - 锁性能问题
+
+  - 伪共享问题
+
+    jdk1.8以后有@Contended注解解决伪共享
+
+- 垃圾收集器
+
+  - ZGC
+
+    着色器和读屏障使得ZGC可以在转移清理阶段无需STW，大幅度降低了延迟。
+
+    
+
