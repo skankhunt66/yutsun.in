@@ -1,0 +1,38 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: '保护微服务',
+  author: 'yutsun',
+  date: '2021-02-17',
+  description: '保护微服务'
+}
+
+export default post(meta)
+
+#### 
+
+* 正确的跟踪请求
+
+* 专注业务，解耦依赖
+
+  - 静态路由
+
+  - 动态路由
+
+  - 验证和授权
+
+  - 度量数据采集和日志记录
+
+#### zuul
+
+* 非JVM服务可以通过sidecar来注册到eureka
+
+* 过滤器
+
+  - 前置过滤器
+
+  - 后置过滤器
+
+  - 路由过滤器
+

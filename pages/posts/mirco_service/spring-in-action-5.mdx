@@ -1,0 +1,58 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: '断路器',
+  author: 'yutsun',
+  date: '2021-02-08',
+  description: '断路器'
+}
+
+export default post(meta)
+
+#### 断路器由来
+
+* 间歇性的问题可能最终导致全面崩溃，因此需要一个机制去绕开不稳定的服务
+
+* 远程调用通常是同步的，并且不会缩短长时间运行的调用
+
+* 应用程序经常被设计为处理远程资源的彻底故障，而不是部分降级
+
+#### 客户端弹性模式
+
+* 在远程服务出错或表现不佳时保护远程资源客户端免于崩溃，阻止问题扩散。
+
+* 四种弹性模式
+
+    - client load balance
+
+        ribbon提供负载均衡服务
+
+    - circuit breaker
+
+        如果对远程资源的调用失败过多，就介入，采取快速失败
+
+    - fallback
+
+        远程调用失败时，执行替代代码路径
+
+    - bulkhead
+
+        使用线程池作为保护舱，使得一个响应迟缓的服务不会拖累系统的其余部分
+
+* 弹性的意义
+
+* fallback
+
+	- 后备方法如果调用了其他服务，也需要用断路器
+
+#### hystrix
+
+* 配置生效的级别
+
+	- 应用级别
+
+	- 类级别
+
+	- 线程池级别
+

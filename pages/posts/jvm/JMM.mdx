@@ -1,0 +1,44 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: 'Java内存管理',
+  author: 'yutsun',
+  date: '2021-02-21',
+  description: 'Java内存管理'
+}
+
+export default post(meta)
+
+# 自动内存管理
+
+## Java内存区域与内存溢出异常
+
+### Java内存区域
+- 运行时数据区域
+	- 程序计数器
+		- 线程私有
+		- 取指令用的
+	- Java虚拟机栈
+		- 线程私有
+		- 存储局部变量表、操作数栈、动态连接、方法出口
+		- StackOverflow
+		- OutOfMemory
+	- 本地方法栈
+		- 为本地方法准备的栈
+	- 虚拟机堆
+		- 线程共享区域
+		- 几乎所有的对象实例都在这里分匹配内存
+		- 例外：栈上分配、标量替换
+		- 划出多个线程私有的缓冲区（Thread Local Allocation Buffer，TLAB）
+		- OOM
+	- 方法区
+		- 类型信息、常量、静态变量、即时编译器编译后的代码缓存等
+		- perm
+		- 
+	- 运行时常量池
+	- 直接内存
+
+### 对象的创建
+
+

@@ -1,0 +1,64 @@
+import post from '../../templates/post'
+import app from '../../templates/post'
+
+export const meta = {
+  title: 'spring boot配置服务器控制配置',
+  author: 'yutsun',
+  date: '2021-02-06',
+  description: 'spring boot配置服务器控制配置'
+}
+
+export default post(meta)
+
+#### 服务配置分离的关键点
+
+* 分离
+
+* 抽象
+
+* 集中
+
+* 稳定
+
+----- 
+
+#### 设计中的要点
+
+* 微服务实例启动时，将调用一个服务端点来读取配置信息
+
+* 实际信息驻留在数据源中
+
+* 应用程序配置数据的实际管理与应用程序的部署方式无关
+
+* 进行配置更改时，需要通知应用程序
+
+----<!-- markdownlint-capture -->
+
+#### 方案选型
+
+* Etcd go+raft
+
+* Eureka netflix出品
+
+* Consul hashicorp开发，swim协议
+
+* zookeeper apache项目
+
+* spring-cloud-config 非分布式
+
+	- spring-cloud配置服务器易于搭建使用
+
+	- spring-cloud提供多个后端用于存储配置数据
+
+	- 可以直接与git源控制平台集成
+
+* 实现
+
+	- 允许使用环境特定值创建应用程序属性
+
+	- 使用spring profile启动服务
+
+	- spring cloud配置服务可以使用基于文件或基于git的存储库
+
+	- 允许对称和非对称加密
+
