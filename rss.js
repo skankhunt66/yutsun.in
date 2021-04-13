@@ -1,6 +1,7 @@
 const fs = require('fs')
 const RSS = require('rss')
 const path = require('path')
+const rd = require('rd')
 
 function generate() {
   const feed = new RSS({
@@ -10,9 +11,17 @@ function generate() {
   })
 
   const content = []
-  fs.readdirSync(path.join(__dirname, 'pages', 'posts')).forEach(function(file) {
+  
+  // fs.readdirSync(path.join(__dirname, 'pages', 'posts')).forEach(function(file) {
+  //   content.push({
+  //     content: fs.readFileSync(path.join(__dirname, 'pages', 'posts', file)).toString(),
+  //     url: `/posts/${file.replace('.mdx', '')}`
+  //   })
+  // })
+
+  rd.eachFileSync(path.join(__dirname, 'pages', 'posts'), function(file) {
     content.push({
-      content: fs.readFileSync(path.join(__dirname, 'pages', 'posts', file)).toString(),
+      content: fs.readFileSync(path.join(file)).toString(),
       url: `/posts/${file.replace('.mdx', '')}`
     })
   })

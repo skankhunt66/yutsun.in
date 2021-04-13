@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[My Blog]]></title>
+        <description><![CDATA[My Blog]]></description>
+        <link>https://myblog.com</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Tue, 13 Apr 2021 11:26:03 GMT</lastBuildDate>
+        <atom:link href="https://myblog.com/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[缓存-并发解决]]></title>
+            <description><![CDATA[缓存-并发解决]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\cache\cache-concurrent</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\cache\cache-concurrent</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Wed, 17 Mar 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Java发展脉络]]></title>
+            <description><![CDATA[Java发展脉络]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\jvm\historyNFuture</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\jvm\historyNFuture</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sun, 21 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Java内存管理]]></title>
+            <description><![CDATA[Java内存管理]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\jvm\JMM</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\jvm\JMM</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sun, 21 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[保护微服务]]></title>
+            <description><![CDATA[保护微服务]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-7</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-7</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Wed, 17 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[服务网关]]></title>
+            <description><![CDATA[服务网关]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-6</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-6</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[断路器]]></title>
+            <description><![CDATA[断路器]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-5</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-5</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Mon, 08 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[服务发现]]></title>
+            <description><![CDATA[服务发现]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-4</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-4</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sun, 07 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[spring boot初探]]></title>
+            <description><![CDATA[springboot 微服务概览]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-2</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-2</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sat, 06 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[spring boot配置服务器控制配置]]></title>
+            <description><![CDATA[spring boot配置服务器控制配置]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-3</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\mirco_service\spring-in-action-3</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sat, 06 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[知识结构-spring-cloud]]></title>
+            <description><![CDATA[spring微服务总结]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\pep0130</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\pep0130</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sat, 30 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[整洁代码]]></title>
+            <description><![CDATA[clean-code]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\clean-code</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\clean-code</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Mon, 25 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[挖矿练习生第二课]]></title>
+            <description><![CDATA[lesson2]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\lesson2</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\lesson2</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Mon, 25 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[csapp概览]]></title>
+            <description><![CDATA[csapp-ch1]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\csapp-ch1</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\csapp-ch1</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Tue, 19 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[写作练习生-提问篇]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\writer-asking</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\writer-asking</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Mon, 18 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[202020202020]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\2020</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\2020</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Thu, 24 Dec 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[结构]]></title>
+            <description><![CDATA[结构组织法]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\the-craft-of-writing\structure</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\the-craft-of-writing\structure</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Thu, 24 Dec 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[disruptor-king of queue]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\disruptor</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\disruptor</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Mon, 08 Jun 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[复习提纲]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\review-outline</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\review-outline</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Mon, 08 Jun 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[rio咖啡馆]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\rio-cafe</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\rio-cafe</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sun, 07 Jun 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[nis概览]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\linux-nis</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\linux-nis</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Tue, 02 Jun 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[volatile]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\reorder-1</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\reorder-1</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Sun, 31 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[freedom information]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\freedom-of-our-age</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\freedom-of-our-age</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[黑暗之魂与普罗米修斯]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\pim</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\pim</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[黑暗之魂与普罗米修斯]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\prometheus-and-the-unkindled</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\prometheus-and-the-unkindled</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[从Leaky Bucket说起]]></title>
+            <description><![CDATA[summary]]></description>
+            <link>/posts/C:\sen\project\lxding.life\pages\posts\RateLimter</link>
+            <guid isPermaLink="false">/posts/C:\sen\project\lxding.life\pages\posts\RateLimter</guid>
+            <dc:creator><![CDATA[yutsun]]></dc:creator>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
