@@ -24,6 +24,7 @@
     "lightense-images": "^1.0.8",
     "prism-react-renderer": "^1.1.0",
     "rehype-slug": "^2.0.1",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "yarn": "^1.22.10"
   }
 }
