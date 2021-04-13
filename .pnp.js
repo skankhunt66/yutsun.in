@@ -2684,7 +2684,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:2.7.1"],
             ["ssri", "npm:6.0.1"],
             ["unique-filename", "npm:1.1.1"],
-            ["y18n", "npm:4.0.0"]
+            ["y18n", "npm:4.0.1"]
           ],
           "linkType": "HARD"
         }]
@@ -9636,7 +9636,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["y18n", [
-        ["npm:4.0.0", {
+        ["npm:4.0.1", {
           "packageLocation": "./.yarn/cache/y18n-npm-4.0.0-55cd797cc5-1.zip/node_modules/y18n/",
           "packageDependencies": [
             ["y18n", "npm:4.0.0"]
